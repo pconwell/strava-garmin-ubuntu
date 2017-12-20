@@ -1,4 +1,4 @@
-> This is still a work in progress
+> This is still a work in progress. The script itself works perfectly fine, but I haven't finished the part of the program that will automatically configure your authentication keys. If you know what you are doing, you need to generate an oauth key and place that key in the config.ini file under 'authenication' 'token' = 
 
 ## Overview
 
@@ -19,4 +19,11 @@ The script itself is fairly easy. The hardest part is setting up correct access 
 
 ### Setting up your computer
 
+This script assumes that your garmin device mounts to `/media/$USER/GARMIN/GARMIN/`. If your device mounts somewhere else, you will need to find that location and change line 18 of `garmin.py`
+
 ### Uploading data
+Pretty simple:
+
+`$ python3 garmin.py`
+
+That's it. It will check what workouts you have already uploaded and upload any that are missing. You could probably set up a cronjob to run the script every night, or if someone is really smart they could probably figure out how to run this script each time the watch is connected to the computer.
