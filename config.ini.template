@@ -1,0 +1,10 @@
+[RANGE]
+days = 27
+
+[USER]
+client_id = 5555
+client_secret = abcdef12345678
+
+[Authentication]
+code =
+token = 
