@@ -29,7 +29,7 @@ garmin_activity.sort(key=lambda x: x[1])
 # Check if auth token exists. If not, ask for authentication and generate one
 # This section needs to be finished, it's only about half done...
 if strava_token == "":
-    webbrowser.open_new_tab('https://www.strava.com/oauth/authorize?client_id=22111&response_type=code&redirect_uri=http://localhost:8000&approval_prompt=force&scope=view_private,write')
+    webbrowser.open_new_tab(f'https://www.strava.com/oauth/authorize?client_id={strava_cid}&response_type=code&redirect_uri=http://localhost:8000&approval_prompt=force&scope=view_private,write')
     webserver.run()
 
 # Set up http header with users auth token, nothing special here
