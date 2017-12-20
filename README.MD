@@ -14,6 +14,20 @@ The script itself is fairly easy. The hardest part is setting up correct access 
 5. Copy and paste your `Client ID` and `Client Secret`\* into the appropriate fields.
 6. The only other setting you may need to adjust is the \[RANGE\] 'days' setting. This is how many days into the past it will upload data (assuming it has not already been uploaded to Strava). This is to prevent you from accidentally uploading a whole bunch of duplicate runs from a long time ago.
 
+> I still need to finish this last little part of the program. Here is where you need to generate your oauth token. It's farily simple, I just haven't finished the code yet. Basically, you need to make a request such as:
+
+> curl -X POST https://www.strava.com/oauth/token -F client_id=22111 -F client_secret=YOUR_SECRETE -F code=YOUR_CODE
+
+> The YOUR_CODE part can be found by going to:
+
+>https://www.strava.com/oauth/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=http://localhost:8000&approval_prompt=force&scope=view_private,write
+
+> Make sure to replace YOUR_CLIENT_ID with your client. Click 'Authorize' and it will take you to a dead webpage BUT, what you need to the URL of the webpage that it redirected you to. It'll look something like:
+
+> http://localhost:8000/?state=&code=601e3e3721fc93ca87d03c8e16e940ef5d99c7b8
+
+> The 601e3e3721fc93ca87d03c8e16e940ef5d99c7b8 part is your code. Take the code and your secret and put them in the curl command, which will generate your oauth token. The Token then goes into the config.ini file.
+
 \* It should go without saying that the secret is just that - a secret. Do not share it with anyone.
 
 
