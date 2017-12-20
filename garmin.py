@@ -13,6 +13,7 @@ config.read(['./config.ini'])
 strava_secret = config['USER']['client_secret']
 strava_cid = config['USER']['client_id']
 strava_token = config['Authentication']['token']
+strava_code = config['Authentication']['code']
 
 user = os.getlogin()
 fpath = "/media/" + user + "/GARMIN/GARMIN/ACTIVITY"
@@ -31,6 +32,18 @@ garmin_activity.sort(key=lambda x: x[1])
 if strava_token == "":
     webbrowser.open_new_tab(f'https://www.strava.com/oauth/authorize?client_id={strava_cid}&response_type=code&redirect_uri=http://localhost:8000&approval_prompt=force&scope=view_private,write')
     webserver.run()
+    
+
+    # This probably works? But I haven't tested it yet.
+    #files = {
+    #    'client_id': (None, strava_cid),
+    #    'client_secret': (None, strava_secret),
+    # 'code': (None, strava_code),
+    #}
+
+    #response = requests.post('https://www.strava.com/oauth/token', files=files)
+
+    
 
 # Set up http header with users auth token, nothing special here
 headers = {
